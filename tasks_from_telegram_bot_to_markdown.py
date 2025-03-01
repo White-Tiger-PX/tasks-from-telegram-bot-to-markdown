@@ -162,23 +162,13 @@ async def check_and_add_tasks(bot_token, user_id, daily_folder_path, last_update
         logger.error("Error in check_and_add_tasks: %s", err)
 
 
-async def main(bot_token, user_id, daily_folder_path, last_update_id_file_path, use_callout_format):
-    await check_and_add_tasks(bot_token, user_id, daily_folder_path, last_update_id_file_path, use_callout_format)
-
-
 if __name__ == "__main__":
-    USE_COLLOUT_FORMAT = config.USE_COLLOUT_FORMAT
-    USER_ID = config.USER_ID
-    BOT_TOKEN = config.BOT_TOKEN
-    DAILY_FOLDER_PATH = config.DAILY_FOLDER_PATH
-    LAST_UPDATE_ID_FILE_PATH = config.LAST_UPDATE_ID_FILE_PATH
-
     asyncio.run(
-        main(
-            BOT_TOKEN,
-            USER_ID,
-            DAILY_FOLDER_PATH,
-            LAST_UPDATE_ID_FILE_PATH,
-            USE_COLLOUT_FORMAT
+        check_and_add_tasks(
+            bot_token                = config.BOT_TOKEN,
+            user_id                  = config.USER_ID,
+            daily_folder_path        = config.DAILY_FOLDER_PATH,
+            last_update_id_file_path = config.LAST_UPDATE_ID_FILE_PATH,
+            use_callout_format       = config.USE_CALLOUT_FORMAT
         )
     )
